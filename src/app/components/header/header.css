@@ -1,0 +1,22 @@
+
+
+.mat-toolbar {
+  background: rgba(15, 23, 42, 0.8) !important;
+  backdrop-filter: blur(10px); 
+  border-bottom: 2px solid var(--neon-cyan);
+  box-shadow: 0 0 15px rgba(34, 211, 238, 0.3);
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+button {
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+button:hover {
+  color: var(--neon-cyan) !important;
+  text-shadow: 0 0 8px var(--neon-cyan);
+}

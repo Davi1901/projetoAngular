@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="form-container">
+    <h2 class="form-title">Registrar Novo Game</h2>
+    
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Título do Jogo</mat-label>
+      <input matInput [(ngModel)]="novoJogo.titulo" name="titulo">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Plataforma</mat-label>
+      <input matInput [(ngModel)]="novoJogo.plataforma" name="plataforma">
+    </mat-form-field>
+
+    <button mat-raised-button class="btn-save" (click)="salvar()">
+      SALVAR NO BANCO
+    </button>
+  </div>
+</div>

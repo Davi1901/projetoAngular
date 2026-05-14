@@ -1,1 +1,29 @@
-/* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Exo+2:wght@300;400;600&display=swap');
+
+:root {
+  --bg-dark: #0f172a;        
+  --card-dark: #1e293b; 
+  --neon-cyan: #22d3ee; 
+  --neon-purple: #c084fc;    
+  --text-gray: #94a3b8;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: white;
+  font-family: 'Exo 2', sans-serif;
+  margin: 0;
+}
+
+h1, h2, h3, .mat-toolbar span {
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.container {
+  padding: 40px 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}

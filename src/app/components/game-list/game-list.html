@@ -1,0 +1,23 @@
+<div class="container">
+  <h2 class="page-title">Explorar Inventário</h2>
+  
+  <div class="game-grid">
+    @for (item of jogos; track item.id) {
+      <div class="ps-card">
+        <div class="ps-card-image">
+          <img [src]="item.capaUrl" [alt]="item.titulo">
+          
+          <div class="ps-overlay">
+             <button mat-mini-fab color="warn" (click)="deletar(item.id)">
+               <mat-icon>delete</mat-icon>
+             </button>
+          </div>
+        </div>
+        <div class="ps-card-info">
+          <h3>{{ item.titulo }}</h3>
+          <p>{{ item.plataforma }}</p>
+        </div>
+      </div>
+    }
+  </div>
+</div>
