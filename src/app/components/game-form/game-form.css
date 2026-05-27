@@ -1,29 +1,174 @@
+/* Container principal centralizado */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 100px);
+  padding: 40px 20px;
+  background: #020617; /* Fundo escuro profundo para destacar o tema gamer */
+}
+
+/* Painel estilo Card do PlayStation */
 .form-container {
-  background: var(--card-dark);
-  padding: 30px;
-  border-radius: 15px;
-  border-left: 5px solid var(--neon-cyan);
-  max-width: 500px;
-  margin: 0 auto;
+  position: relative;
+  background: rgba(15, 23, 42, 0.8) !important; /* Fundo escuro translúcido */
+  backdrop-filter: blur(16px);
+  border: 2px solid #0070d1; /* Borda no azul oficial PlayStation */
+  box-shadow: 0 0 30px rgba(0, 112, 209, 0.25); /* Brilho neon sutil ao redor */
+  border-radius: 16px;
+  padding: 40px;
+  width: 100%;
+  max-width: 550px;
+  transition: all 0.3s ease;
+}
+
+/* Elementos de Interface Gamer (Cantos Táticos) */
+.corner-target {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border: 2px solid #00eeff;
+  opacity: 0.6;
+}
+.top-left { top: 15px; left: 15px; border-right: none; border-bottom: none; }
+.top-right { top: 15px; right: 15px; border-left: none; border-bottom: none; }
+.bottom-left { bottom: 15px; left: 15px; border-right: none; border-top: none; }
+.bottom-right { bottom: 15px; right: 15px; border-left: none; border-top: none; }
+
+/* Título estilizado em Neon */
+.form-title {
+  color: #ffffff;
+  font-size: 1.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-align: center;
+  margin-bottom: 35px;
+  text-shadow: 0 0 10px rgba(0, 112, 209, 0.6);
+  font-family: 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Ajuste e distância entre cada input */
+.full-width {
+  width: 100%;
+  margin-bottom: 28px !important;
+}
+
+/* Estilização Gamer interna dos Inputs do Angular Material */
+::v-deep .mat-mdc-text-field-wrapper {
+  background-color: rgba(30, 41, 59, 0.7) !important;
+  border-radius: 8px !important;
+}
+
+::v-deep .mat-mdc-form-field-focus-indicator {
+  color: #00eeff !important;
+}
+
+/* Cor dos textos digitados e dos labels */
+::v-deep input.mat-mdc-input-element {
+  color: #ffffff !important;
 }
 
 ::v-deep .mat-mdc-form-field-label {
-  color: var(--text-gray) !important;
+  color: #94a3b8 !important;
 }
 
-::v-deep .mat-mdc-text-field-wrapper {
-  background-color: rgba(255, 255, 255, 0.05) !important;
+/* Cor do texto quando o campo está selecionado */
+::v-deep .mat-focused .mat-mdc-form-field-label {
+  color: #00eeff !important;
+  text-shadow: 0 0 5px rgba(0, 238, 255, 0.5);
 }
 
-::v-deep .mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-line-ripple::before {
-  border-bottom-color: var(--text-gray) !important;
+/* Container do botão para suportar o feixe de luz */
+.button-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  margin-top: 10px;
 }
 
+/* Botão de Salvar Estilo 'Press Start' com Animação Laser */
 .btn-save {
+  position: relative;
   width: 100%;
-  margin-top: 20px;
-  background: linear-gradient(45deg, var(--neon-cyan), var(--neon-purple)) !important;
-  color: white !important;
-  font-weight: bold !important;
   height: 50px;
+  background: linear-gradient(135deg, #0070d1 0%, #00df89 100%) !important;
+  color: #ffffff !important;
+  font-size: 1.1rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 15px rgba(0, 112, 209, 0.4) !important;
+  transition: all 0.3s ease !important;
+  overflow: hidden;
+}
+
+/* O Feixe de Laser brilhante que corta o botão de tempos em tempos */
+.btn-save::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transform: skewX(-30deg);
+  animation: laserGamer 4s infinite ease-in-out;
+}
+
+.btn-save:hover:not([disabled]) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(0, 223, 137, 0.6) !important;
+  letter-spacing: 3px;
+}
+
+.btn-save:disabled {
+  background: #334155 !important;
+  color: #64748b !important;
+}
+
+.btn-save:disabled::after {
+  display: none;
+}
+
+/* Barra Estilo HUD Inferior */
+.hud-loading-bar {
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.05);
+  margin-top: 25px;
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+
+.hud-progress {
+  width: 30%;
+  height: 100%;
+  background: #00eeff;
+  box-shadow: 0 0 8px #00eeff;
+  position: absolute;
+  left: 0;
+  animation: radarHUD 2.5s infinite linear;
+}
+
+/* Ativa animação veloz apenas quando o formulário estiver salvando */
+.hud-loading-bar.active .hud-progress {
+  background: #00df89;
+  box-shadow: 0 0 10px #00df89;
+  width: 60%;
+  animation-duration: 0.8s;
+}
+
+/* Definições das Animações Keyframes */
+@keyframes laserGamer {
+  0% { left: -150%; }
+  30% { left: 150%; }
+  100% { left: 150%; }
+}
+
+@keyframes radarHUD {
+  0% { left: -60%; }
+  100% { left: 100%; }
 }

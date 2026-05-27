@@ -1,23 +1,48 @@
 <div class="container">
-  <h2 class="page-title">Explorar Inventário</h2>
+  <div class="hud-side-line left"></div>
+  <div class="hud-side-line right"></div>
+
+  <div class="title-wrapper-gamer">
+    <div class="title-container">
+      <h2 class="page-title">Explorar Inventário</h2>
+      <span class="game-counter">{{ jogos.length }} {{ jogos.length === 1 ? 'Jogo' : 'Jogos' }}</span>
+    </div>
+  </div>
   
   <div class="game-grid">
     @for (item of jogos; track item.id) {
       <div class="ps-card">
         <div class="ps-card-image">
-          <img [src]="item.capaUrl" [alt]="item.titulo">
+          <img [src]="item.capaUrl || 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=400&q=80'" [alt]="item.titulo">
           
-          <div class="ps-overlay">
-             <button mat-mini-fab color="warn" (click)="deletar(item.id)">
+          <div class="ps-overlay" style="display: flex; gap: 8px;">
+             <button mat-mini-fab color="primary" [routerLink]="['/edit-game', item.id]" title="Editar Jogo">
+               <mat-icon>edit</mat-icon>
+             </button>
+             
+             <button mat-mini-fab color="warn" (click)="deletar(item.id)" title="Excluir Jogo">
                <mat-icon>delete</mat-icon>
              </button>
           </div>
         </div>
         <div class="ps-card-info">
           <h3>{{ item.titulo }}</h3>
-          <p>{{ item.plataforma }}</p>
+          
+          <div class="platform-badges">
+            @for (plat of item.plataforma.split(','); track $index) {
+              @if (plat.trim()) {
+                <span class="badge">{{ plat.trim() }}</span>
+              }
+            }
+          </div>
         </div>
       </div>
     }
   </div>
 </div>
+
+@if (mostrarBotaoTopo) {
+  <button class="btn-topo" (click)="voltarAoTopo()" title="Voltar ao Topo">
+    <mat-icon>arrow_upward</mat-icon>
+  </button>
+}

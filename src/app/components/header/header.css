@@ -1,22 +1,50 @@
-
-
-.mat-toolbar {
-  background: rgba(15, 23, 42, 0.8) !important;
-  backdrop-filter: blur(10px); 
-  border-bottom: 2px solid var(--neon-cyan);
-  box-shadow: 0 0 15px rgba(34, 211, 238, 0.3);
+/* Customização completa da barra de navegação estilo PS5 */
+.gamer-toolbar {
+  background: rgba(10, 17, 32, 0.85) !important; /* Fundo escuro semi-transparente */
+  backdrop-filter: blur(12px); /* Efeito de vidro desfocado moderno */
+  border-bottom: 2px solid #0070d1; /* Linha neon no azul oficial do PlayStation */
+  box-shadow: 0 4px 20px rgba(0, 112, 209, 0.4); /* Brilho neon azul para destacar */
+  padding: 0 24px !important;
+  height: 70px !important;
 }
 
+/* Estilização do texto da Logo */
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #ffffff !important;
+  text-shadow: 0 0 10px rgba(0, 112, 209, 0.6);
+  font-family: 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Espaçador para empurrar os botões para a direita */
 .spacer {
   flex: 1 1 auto;
 }
 
-button {
-  font-weight: bold;
-  letter-spacing: 1px;
+/* Container dos botões de navegação */
+.nav-buttons {
+  display: flex;
+  gap: 15px;
 }
 
-button:hover {
-  color: var(--neon-cyan) !important;
-  text-shadow: 0 0 8px var(--neon-cyan);
+/* Estilo de todos os botões do Menu - AGORA TOTALMENTE VISÍVEIS */
+.nav-link-btn {
+  color: #ffffff !important; /* Texto obrigatoriamente branco */
+  font-weight: 600 !important;
+  font-size: 0.95rem !important;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: all 0.3s ease !important;
+  border-radius: 8px !important;
+  padding: 0 16px !important;
+}
+
+/* Efeito fantástico ao passar o mouse por cima (Hover) */
+.nav-link-btn:hover {
+  background: rgba(0, 112, 209, 0.2) !important; /* Fundo azul sutil */
+  color: #00eeff !important; /* Texto muda para azul neon brilhante */
+  text-shadow: 0 0 8px #00eeff; /* Brilho nas letras */
+  box-shadow: 0 0 12px rgba(0, 238, 255, 0.3); /* Borda brilhante */
 }

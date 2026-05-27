@@ -1,0 +1,212 @@
+/* Container Geral do Portal */
+.news-portal-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  color: #ffffff;
+}
+
+/* Linhas Neon Verticais Fixas nas Extremidades (Idênticas à página de Jogos) */
+.hud-side-line {
+  position: fixed;
+  top: 70px; /* Alinhado perfeitamente abaixo do cabeçalho navbar */
+  width: 2px;
+  height: calc(100vh - 70px);
+  z-index: 10;
+  pointer-events: none; /* Deixa os cliques passarem direto por elas sem travar a tela */
+}
+
+.hud-side-line.left {
+  left: 40px;
+  background: linear-gradient(180deg, transparent 0%, #0070d1 30%, #00eeff 50%, #0070d1 70%, transparent 100%);
+  box-shadow: -2px 0 15px rgba(0, 238, 255, 0.4);
+}
+
+.hud-side-line.right {
+  right: 40px;
+  background: linear-gradient(180deg, transparent 0%, #0070d1 30%, #00eeff 50%, #0070d1 70%, transparent 100%);
+  box-shadow: 2px 0 15px rgba(0, 238, 255, 0.4);
+}
+
+/* Cabeçalho do Portal */
+.portal-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.hud-tag {
+  display: inline-block;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.8rem;
+  color: #00eeff;
+  border: 1px solid rgba(0, 238, 255, 0.4);
+  background: rgba(0, 112, 209, 0.1);
+  padding: 4px 14px;
+  border-radius: 4px;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+  text-shadow: 0 0 8px rgba(0, 238, 255, 0.5);
+}
+
+.portal-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0 0 10px 0;
+  text-shadow: 0 0 15px rgba(0, 112, 209, 0.6);
+}
+
+.portal-subtitle {
+  color: #94a3b8;
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.portal-divider {
+  height: 2px;
+  width: 150px;
+  background: linear-gradient(90deg, transparent, #00eeff, transparent);
+  margin: 25px auto 0 auto;
+  box-shadow: 0 0 8px #00eeff;
+}
+
+/* Grid de Notícias */
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  margin-top: 20px;
+}
+
+/* Card de Notícia Individual */
+.news-card {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(0, 112, 209, 0.2);
+  border-radius: 12px;
+  overflow: hidden;
+  text-decoration: none !important;
+  color: inherit !important;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+/* Imagem e Badges */
+.news-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.news-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.news-badge {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 4px;
+  color: #ffffff;
+  letter-spacing: 1px;
+}
+
+.badge-ign { background-color: #ff4500; box-shadow: 0 0 10px rgba(255, 69, 0, 0.5); }
+.badge-hltb { background-color: #2b7fff; box-shadow: 0 0 10px rgba(43, 127, 255, 0.5); }
+.badge-meta { background-color: #66cc33; box-shadow: 0 0 10px rgba(102, 204, 51, 0.5); }
+
+/* Conteúdo interno do Card */
+.news-content {
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.news-source {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.8rem;
+  color: #00eeff;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.news-content h3 {
+  font-size: 1.25rem;
+  line-height: 1.4;
+  margin: 0 0 12px 0;
+  color: #ffffff;
+  font-weight: 700;
+  transition: color 0.2s ease;
+}
+
+.news-content p {
+  color: #94a3b8;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0 0 20px 0;
+  flex-grow: 1;
+}
+
+/* Link de Ação */
+.read-more {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #00eeff;
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: gap 0.2s ease;
+}
+
+.read-more mat-icon {
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+}
+
+/* Hover nos Cards com Brilho Neon */
+.news-card:hover {
+  transform: translateY(-8px);
+  border-color: #00eeff;
+  background: rgba(15, 23, 42, 0.9);
+  box-shadow: 0 0 25px rgba(0, 112, 209, 0.4);
+}
+
+.news-card:hover .news-image-wrapper img {
+  transform: scale(1.08);
+}
+
+.news-card:hover .news-content h3 {
+  color: #00eeff;
+}
+
+.news-card:hover .read-more {
+  gap: 15px;
+}
+
+/* Rodapé */
+.about-footer {
+  text-align: center;
+  margin-top: 60px;
+  border-top: 1px solid rgba(148, 163, 184, 0.1);
+  padding-top: 20px;
+}
+
+.about-footer p {
+  color: #64748b;
+  font-size: 0.85rem;
+}

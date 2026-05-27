@@ -1,13 +1,100 @@
+/* Container e Grid de Jogos */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
 .game-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 30px;
-  padding: 20px;
+  gap: 35px;
+  padding: 25px 0;
 }
 
+/* Linhas Neon Verticais nas Extremidades da Tela */
+.hud-side-line {
+  position: fixed;
+  top: 70px; /* Começa exatamente após a gamer-toolbar */
+  width: 2px;
+  height: calc(100vh - 70px);
+  z-index: 10; /* Fica acima do fundo, mas não atrapalha cliques nos cards */
+  pointer-events: none; /* Garante que o usuário consiga clicar em qualquer coisa perto delas */
+}
+
+/* Linha da Esquerda */
+.hud-side-line.left {
+  left: 40px; /* Distância sutil da borda esquerda da janela */
+  background: linear-gradient(180deg, transparent 0%, #0070d1 30%, #00eeff 50%, #0070d1 70%, transparent 100%);
+  box-shadow: -2px 0 15px rgba(0, 238, 255, 0.4);
+}
+
+/* Linha da Direita */
+.hud-side-line.right {
+  right: 40px; /* Distância sutil da borda direita da janela */
+  background: linear-gradient(180deg, transparent 0%, #0070d1 30%, #00eeff 50%, #0070d1 70%, transparent 100%);
+  box-shadow: 2px 0 15px rgba(0, 238, 255, 0.4);
+}
+
+/* Contêiner Gamer que cria as linhas horizontais do título */
+.title-wrapper-gamer {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 25px 0;
+  gap: 20px;
+}
+
+.title-wrapper-gamer::before {
+  content: '';
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(270deg, #0070d1 0%, #00eeff 70%, transparent 100%);
+  box-shadow: 0 0 10px rgba(0, 238, 255, 0.5);
+}
+
+.title-wrapper-gamer::after {
+  content: '';
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(90deg, #0070d1 0%, #00eeff 70%, transparent 100%);
+  box-shadow: 0 0 10px rgba(0, 238, 255, 0.5);
+}
+
+/* Alinhamento do Bloco Central */
+.title-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-shrink: 0;
+}
+
+.page-title {
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0;
+  text-shadow: 0 0 10px rgba(0, 112, 209, 0.4);
+}
+
+.game-counter {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.95rem;
+  color: #00eeff;
+  text-shadow: 0 0 8px rgba(0, 238, 255, 0.6);
+  font-weight: bold;
+  background: rgba(0, 112, 209, 0.15);
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 238, 255, 0.3);
+}
+
+/* Cards Estilo PlayStation */
 .ps-card {
   cursor: pointer;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .ps-card-image {
@@ -15,8 +102,9 @@
   aspect-ratio: 2/3;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
   border: 2px solid transparent;
+  transition: all 0.3s ease;
 }
 
 .ps-card-image img {
@@ -25,34 +113,107 @@
   object-fit: cover;
 }
 
+/* Hover nos Cards com Glow Radiante */
 .ps-card:hover {
-  transform: scale(1.05);
+  transform: translateY(-8px) scale(1.02);
 }
 
 .ps-card:hover .ps-card-image {
-  border-color: #0070d1; /* Azul PlayStation */
-  box-shadow: 0 0 25px rgba(0, 112, 209, 0.5);
+  border-color: #0070d1;
+  box-shadow: 0 0 25px rgba(0, 112, 209, 0.7), 0 0 10px rgba(0, 238, 255, 0.4);
 }
 
+/* Overlay dos botões de ação */
 .ps-overlay {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 12px;
+  right: 12px;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  display: flex;
+  gap: 8px;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: translateY(-5px);
 }
 
 .ps-card:hover .ps-overlay {
   opacity: 1;
+  transform: translateY(0);
 }
 
+/* Informações do Jogo */
 .ps-card-info h3 {
-  margin: 10px 0 0;
-  color: white;
-  font-size: 1.1rem;
+  margin: 15px 0 8px;
+  color: #ffffff;
+  font-size: 1.15rem;
+  letter-spacing: 1px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.ps-card-info p {
+/* Badges/Tags das Plataformas */
+.platform-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 5px;
+}
+
+.badge {
+  background: rgba(30, 41, 59, 0.7);
   color: #94a3b8;
-  font-size: 0.9rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 4px;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.2s ease;
+}
+
+.ps-card:hover .badge {
+  color: #ffffff;
+  border-color: rgba(0, 238, 255, 0.4);
+  background: rgba(0, 112, 209, 0.2);
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+/* Botão Flutuante Voltar ao Topo */
+.btn-topo {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: #0070d1;
+  color: #ffffff;
+  border: 1px solid #00eeff;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(0, 112, 209, 0.6);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  z-index: 999;
+  animation: surgir 0.3s ease-out;
+}
+
+.btn-topo:hover {
+  background-color: #00eeff;
+  color: #000000;
+  transform: translateY(-5px);
+  box-shadow: 0 0 25px rgba(0, 238, 255, 0.8);
+}
+
+@keyframes surgir {
+  from {
+    opacity: 0;
+    transform: scale(0.5) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }

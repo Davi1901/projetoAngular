@@ -1,19 +1,37 @@
 <div class="container">
   <div class="form-container">
-    <h2 class="form-title">Registrar Novo Game</h2>
+    <div class="corner-target top-left"></div>
+    <div class="corner-target top-right"></div>
+    <div class="corner-target bottom-left"></div>
+    <div class="corner-target bottom-right"></div>
+
+    <h2 class="form-title">
+      {{ modoEdicao ? 'Painel de Edição Gamer' : 'Painel de Cadastro Gamer' }}
+    </h2>
     
     <mat-form-field appearance="fill" class="full-width">
-      <mat-label>Título do Jogo</mat-label>
-      <input matInput [(ngModel)]="novoJogo.titulo" name="titulo">
+      <mat-label>Nome do Jogo</mat-label>
+      <input matInput [(ngModel)]="novoJogo.titulo" name="titulo" placeholder="Ex: Elden Ring, Mortal Kombat 11">
     </mat-form-field>
 
     <mat-form-field appearance="fill" class="full-width">
       <mat-label>Plataforma</mat-label>
-      <input matInput [(ngModel)]="novoJogo.plataforma" name="plataforma">
+      <input matInput [(ngModel)]="novoJogo.plataforma" name="plataforma" placeholder="Ex: PS5, PC, Xbox">
     </mat-form-field>
 
-    <button mat-raised-button class="btn-save" (click)="salvar()">
-      SALVAR NO BANCO
-    </button>
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Link da Imagem (Opcional)</mat-label>
+      <input matInput [(ngModel)]="novoJogo.capaUrl" name="capaUrl" placeholder="Deixe em branco para buscar automático">
+    </mat-form-field>
+
+    <div class="button-wrapper">
+      <button mat-raised-button class="btn-save" (click)="salvar()" [disabled]="carregando">
+        {{ carregando ? 'PROCESSANDO GAME...' : (modoEdicao ? 'SALVAR ALTERAÇÕES' : 'CADASTRAR NO SITE') }}
+      </button>
+    </div>
+
+    <div class="hud-loading-bar" [class.active]="carregando">
+      <div class="hud-progress"></div>
+    </div>
   </div>
 </div>

@@ -1,14 +1,58 @@
-<mat-card style="margin-top: 20px;">
-  <mat-card-header>
-    <mat-card-title>Sobre o GameVault</mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-    <p>Este projeto é um gerenciador de coleção de games para a P2 de Angular.</p>
-    <h3>Links Úteis sobre Games:</h3>
-    <ul>
-      <li><a href="https://www.ign.com" target="_blank">IGN - Notícias e Reviews</a></li>
-      <li><a href="https://howlongtobeat.com" target="_blank">HowLongToBeat - Tempo de Jogo</a></li>
-      <li><a href="https://www.metacritic.com" target="_blank">Metacritic - Notas da Crítica</a></li>
-    </ul>
-  </mat-card-content>
-</mat-card>
+<div class="news-portal-container">
+  <div class="hud-side-line left"></div>
+  <div class="hud-side-line right"></div>
+
+  <div class="portal-header">
+    <div class="hud-tag">HUB DE NOTÍCIAS</div>
+    <h1 class="portal-title">GameVault Daily News</h1>
+    <p class="portal-subtitle">Fique por dentro das últimas atualizações, análises críticas e guias do universo gamer.</p>
+    <div class="portal-divider"></div>
+  </div>
+
+  <div class="news-grid">
+    
+    <a href="https://www.ign.com" target="_blank" class="news-card">
+      <div class="news-image-wrapper">
+        <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600&q=80" alt="IGN News">
+        <span class="news-badge badge-ign">REVIEW</span>
+      </div>
+      <div class="news-content">
+        <span class="news-source">IGN PORTAL</span>
+        <h3>Análises, Críticas e as Notas dos Próximos Lançamentos do Ano</h3>
+        <p>Confira o veredito completo dos principais críticos da indústria sobre os jogos mais aguardados da temporada.</p>
+        <span class="read-more">Acessar Matéria <mat-icon>trending_flat</mat-icon></span>
+      </div>
+    </a>
+
+    <a href="https://howlongtobeat.com" target="_blank" class="news-card">
+      <div class="news-image-wrapper">
+        <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&q=80" alt="HowLongToBeat">
+        <span class="news-badge badge-hltb">GUIA DE JOGO</span>
+      </div>
+      <div class="news-content">
+        <span class="news-source">HOW LONG TO BEAT</span>
+        <h3>Tempo de Campanha: Quanto tempo você vai levar para zerar?</h3>
+        <p>Descubra a duração exata da campanha principal, missões secundárias e a busca pelos 100% de platina do seu inventário.</p>
+        <span class="read-more">Ver Estatísticas <mat-icon>trending_flat</mat-icon></span>
+      </div>
+    </a>
+
+    <a href="https://www.metacritic.com" target="_blank" class="news-card">
+      <div class="news-image-wrapper">
+        <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600&q=80" alt="Metacritic">
+        <span class="news-badge badge-meta">CRÍTICA</span>
+      </div>
+      <div class="news-content">
+        <span class="news-source">METACRITIC SCORE</span>
+        <h3>Média Global: Veja o rank dos jogos mais aclamados pela mídia</h3>
+        <p>Acompanhe o compilado das notas dos jornalistas e a opinião da comunidade para planejar suas próximas aquisições.</p>
+        <span class="read-more">Ver Rankings <mat-icon>trending_flat</mat-icon></span>
+      </div>
+    </a>
+
+  </div>
+
+  <footer class="about-footer">
+    <p>Este portal é um gerenciador de coleção de jogos eletrônicos desenvolvido em Angular para avaliação acadêmica P2.</p>
+  </footer>
+</div>
